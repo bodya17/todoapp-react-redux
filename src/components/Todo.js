@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { addTodo } from '../actions'
+import { addTodo, removeTodo } from '../actions'
 
 class Todo extends React.Component {
     render() {
-        const todos = this.props.todos.map((todo, i) => <li key={i}>{todo}</li>)
+        const todos = this.props.todos.map((todo, i) => <li key={i} onClick={() => this.props.removeTodo(i)}>{todo}</li>)
 
         return (
             <div style={{margin: '40px'}}>
@@ -28,6 +28,9 @@ function mapStateToProps (state) {
 const mapDispatchToProps = (dispatch) => ({
     addTodo(text) {
         dispatch(addTodo(text))
+    },
+    removeTodo(index) {
+        dispatch(removeTodo(index))
     }
 })
 

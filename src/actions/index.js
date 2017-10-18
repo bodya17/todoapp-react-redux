@@ -1,4 +1,4 @@
-import { ADD_TODO } from '../constants'
+import { ADD_TODO, REMOVE_TODO } from '../constants'
 
 function addTodo(todoText) {
     return {
@@ -9,4 +9,13 @@ function addTodo(todoText) {
     }
 }
 
-export { addTodo }
+function removeTodo(index) {
+    return {
+        type: REMOVE_TODO,
+        payload: {
+            index
+        }
+    }
+}
+
+export { addTodo, removeTodo }
